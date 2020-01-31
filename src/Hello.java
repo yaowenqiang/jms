@@ -159,10 +159,15 @@ public class Hello {
         int tmp2 = 3;
         System.out.println("tmp2 is : " + tmp2);
 
+        int result2 = calculateScore(true, 100, 1, 10);
     }
 
 
-
+//    public static void calculateScore(boolean gameOver, int score, int levelCompleted, int bonus) {
+    public static int calculateScore(boolean gameOver, int score, int levelCompleted, int bonus) {
+        System.out.println("calculateScore");
+        return 100;
+    }
 
 
 }
