@@ -1,6 +1,5 @@
 public class Hello {
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) {
         // integer has a width of 32
 //        System.out.println("Hello World");
         int myFirstNumber = 5;
@@ -18,7 +17,7 @@ public class Hello {
 
         // byte has a width of 8
         byte myMinByteValue = -128;
-        byte myHalfMinByteValue = (byte)(myMinByteValue/2);
+        byte myHalfMinByteValue = (byte) (myMinByteValue / 2);
         System.out.println("myHalfMinByteValue: " + myHalfMinByteValue);
         byte myMaxByteValue = 127;
         System.out.println(myMinByteValue);
@@ -26,7 +25,7 @@ public class Hello {
 
         // short has a width of 16
         short myMinShortValue = -32768;
-        short myHalfMinShortValue = (short)(myMinShortValue/2);
+        short myHalfMinShortValue = (short) (myMinShortValue / 2);
         System.out.println("myHalfMinShortValue: " + myHalfMinShortValue);
         short myMaxShortValue = 32767;
         System.out.println(myMinShortValue);
@@ -45,17 +44,17 @@ public class Hello {
         int intValue = 50;
 
         long longTotal = 50000L + 10L * (byteValue + shortValue + intValue);
-        short shortTotal = (short)(1000 + 10 * (byteValue + shortValue + intValue));
+        short shortTotal = (short) (1000 + 10 * (byteValue + shortValue + intValue));
         System.out.println("longTotal: " + longTotal);
         System.out.println("shortTotal: " + shortTotal);
 
         int myIntValue2 = 5;
-        int myIntValue3= 5/2;
+        int myIntValue3 = 5 / 2;
 
         // width of float is 32 (4 bytes)
         float myFloatVal = 5F;
 //        float myFloatVal = 5.4;
-        float myFloatVal2 = (float)5.4;
+        float myFloatVal2 = (float) 5.4;
         float myFloatVal3 = 5F / 3F;
 
         // width of double is 64( 8 bytes)
@@ -112,18 +111,29 @@ public class Hello {
         System.out.println(numberString);
 
         String lastString = "10";
-        int myInt =  20;
+        int myInt = 20;
+
         lastString = lastString + myInt;
         System.out.println(lastString);
 
+        int result = 1 + 2;
+
+        int newValue = 15;
+
+//        if(newValue = 15)
+        if(newValue == 15)
+            System.out.println(newValue);
+
+        boolean isCar = false;
+//        if(isCar == true)
+        if(isCar = true)
+            System.out.println("This is supposed to happen.");
 
 
+// https://docs.oracle.com/javase/tutorial/java/nutsandbolts/opsummary.html
 
-
-
-
-
-
+//        Java Operator Precedence Table
+//        http://cs.bilkent.edu.tr/~guvenir/courses/CS101/op_precedence.html
     }
 
 }
