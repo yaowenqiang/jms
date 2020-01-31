@@ -84,6 +84,27 @@ public class Hello {
         double PI = 3.141_592_6d;
         System.out.println(PI);
 
+        // width of char is 16 (2 bytes)
+        char myChar = 'd';
+        // https://unicode-table.com/en/#control-character
+
+        char copyright = '\u00A9';
+        System.out.println(copyright);
+
+        char registed = '\u00AE';
+        System.out.println(registed);
+
+        boolean myBooleanVal = true;
+        boolean isMale = false;
+        System.out.println(myBooleanVal);
+        System.out.println(isMale);
+
+
+
+
+
+
+
 
     }
 
