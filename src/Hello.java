@@ -49,6 +49,42 @@ public class Hello {
         System.out.println("longTotal: " + longTotal);
         System.out.println("shortTotal: " + shortTotal);
 
+        int myIntValue2 = 5;
+        int myIntValue3= 5/2;
+
+        // width of float is 32 (4 bytes)
+        float myFloatVal = 5F;
+//        float myFloatVal = 5.4;
+        float myFloatVal2 = (float)5.4;
+        float myFloatVal3 = 5F / 3F;
+
+        // width of double is 64( 8 bytes)
+        double myDoubleValue = 5D;
+        double myDoubleValue2 = 5D / 3D;
+
+        System.out.println("myIntValue2: " + myIntValue2);
+        System.out.println("myIntValue3: " + myIntValue3);
+        System.out.println("myFloatVal: " + myFloatVal);
+        System.out.println("myFloatVal3: " + myFloatVal3);
+        System.out.println("myDoubleValue: " + myDoubleValue);
+        System.out.println("myDoubleValue2: " + myDoubleValue2);
+
+
+        // double is recommended
+        // double is faster on modern computers
+        // double is more precise
+        // many build-in function usually us a 'double' and thirdly
+
+        // 1 pound = 0.45359237 kilograms
+
+        double myPoundValue = 1;
+        double myKkilogramValue = myPoundValue * 0.45359237;
+        System.out.println(myPoundValue + " pound(s) is equals to " + myKkilogramValue + " kilogram(s)");
+
+        double PI = 3.141_592_6d;
+        System.out.println(PI);
+
+
     }
 
 }
