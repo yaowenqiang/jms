@@ -121,12 +121,12 @@ public class Hello {
         int newValue = 15;
 
 //        if(newValue = 15)
-        if(newValue == 15)
+        if (newValue == 15)
             System.out.println(newValue);
 
         boolean isCar = false;
 //        if(isCar == true)
-        if(isCar = true)
+        if (isCar = true)
             System.out.println("This is supposed to happen.");
 
 
@@ -134,6 +134,35 @@ public class Hello {
 
 //        Java Operator Precedence Table
 //        http://cs.bilkent.edu.tr/~guvenir/courses/CS101/op_precedence.html
+
+
+//        https://en.wikipedia.org/wiki/List_of_java_keywords
+
+        if (1 > 0)
+
+
+            System.out.println("this should  be executed!");
+
+        System.out.println("this is executed!");
+
+
+        int tmp = 100;
+        System.out.println("tmp is " + tmp);
+        if (true) {
+            tmp = 1;
+            int tmp2 = 2;
+            System.out.println("tmp is " + tmp);
+            System.out.println("tmp2 is " + tmp2);
+//            the new variable will be destroyed after the code block is finished
+        }
+//        System.out.println("tmp2 is : " + tmp2);
+        int tmp2 = 3;
+        System.out.println("tmp2 is : " + tmp2);
+
     }
+
+
+
+
 
 }
