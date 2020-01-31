@@ -170,4 +170,24 @@ public class Hello {
     }
 
 
+    public static int calculateScore(int gameOver, int score, int levelCompleted, int bonus) {
+        System.out.println("calculateScore");
+        return 100;
+    }
+
+    public static void calculateScore() {
+        System.out.println("calculateScore");
+    }
+
+    public static void feetToCentimeters() {
+//        https://www.metric-conversions.org/length/feet-to-centimeters.htm
+    }
+
+
+//    public static void calculateScore(boolean gameOver, int score, int levelCompleted, int bonus) {
+//        System.out.println("calculateScore");
+//    }
+
+
+
 }
