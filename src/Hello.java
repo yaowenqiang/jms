@@ -160,10 +160,11 @@ public class Hello {
         System.out.println("tmp2 is : " + tmp2);
 
         int result2 = calculateScore(true, 100, 1, 10);
+        switchCase();
     }
 
 
-//    public static void calculateScore(boolean gameOver, int score, int levelCompleted, int bonus) {
+    //    public static void calculateScore(boolean gameOver, int score, int levelCompleted, int bonus) {
     public static int calculateScore(boolean gameOver, int score, int levelCompleted, int bonus) {
         System.out.println("calculateScore");
         return 100;
@@ -189,5 +190,44 @@ public class Hello {
 //    }
 
 
+    public static void switchCase() {
+        int switchValue = 1;
+
+        switch (switchValue) {
+            case 1:
+                System.out.println("equal to 1");
+                break;
+            case 2:
+                System.out.println("equal to 2");
+                break;
+            case 3:
+                System.out.println("equal to 3");
+                break;
+            case 4:case 5: case 6:
+                System.out.println("between 4 and 6");
+                break;
+
+            default:
+                System.out.println("unknown value");
+                break;
+
+        }
+
+        String month = "January";
+
+
+        switch(month.toLowerCase()) {
+            case "January":
+                System.out.println("Jan");
+                break;
+            case "June":
+                System.out.println("Jun");
+                break;
+            default:
+                System.out.println("Not sure");
+                break;
+        }
+
+    }
 
 }
