@@ -162,6 +162,8 @@ public class Hello {
         int result2 = calculateScore(true, 100, 1, 10);
         switchCase();
         forLoop();
+        whileLoop();
+        doWhileLoop();
     }
 
 
@@ -237,17 +239,39 @@ public class Hello {
         }
     }
 
+    //https://primes.utm.edu/lists/small/1000.txt
+
     public static boolean isPrime(int n) {
         if (n == 1) {
             return false;
         }
 
-        for (int i = 2; i <= n/2; i++) {
+//        for (int i = 2; i <= n/2; i++) {
+        for (int i = 2; i <= (long)Math.sqrt(n); i++) {
             if (n % i == 0) {
                 return false;
             }
         }
         return true;
+    }
+
+    public static void whileLoop() {
+        int count = 0;
+        while (count < 100) {
+            System.out.println("current count is: " + count);
+            count++;
+        }
+    }
+
+    public static void doWhileLoop() {
+        int i = 100;
+        do {
+            System.out.println("current i is: " + i );
+//            i++;
+            if (i == 100) {
+                break;
+            }
+        } while (i > 100);
     }
 
 }
