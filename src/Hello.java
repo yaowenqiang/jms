@@ -164,6 +164,16 @@ public class Hello {
         forLoop();
         whileLoop();
         doWhileLoop();
+
+        Car porsche = new Car();
+        Car holden = new Car();
+//        porsche = null;
+        System.out.println("Model is " + porsche.getModel());
+        porsche.setModel("Carrera");
+        System.out.println("Model is " + porsche.getModel());
+        porsche.setModel("911");
+        System.out.println("Model is " + porsche.getModel());
+
     }
 
 
