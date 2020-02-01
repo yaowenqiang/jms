@@ -174,6 +174,16 @@ public class Hello {
         porsche.setModel("911");
         System.out.println("Model is " + porsche.getModel());
 
+        Account bobAccount = new Account("1234", 0.0, "Bo Brown", "myemail@bob.com", "1234");
+        bobAccount.withdraw(100.0);
+        //存钱
+        bobAccount.deposit(100.0);
+        //取钱
+        bobAccount.withdraw(100.0);
+        bobAccount.deposit(100.0);
+        bobAccount.withdraw(100.0);
+
+
     }
 
 
