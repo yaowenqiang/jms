@@ -19,7 +19,11 @@ public class Account {
         System.out.println("Empty constructor called");
     }
 
-    public Account(String number, double balance,  String customerName,  String customerEmailAddress, String customerPhoneNumber) {
+    public Account(String customerName, String customerEmailAddress, String customerPhoneNumber) {
+        this("999999", 1000.55, customerEmailAddress,customerEmailAddress,customerPhoneNumber);
+    }
+
+    public Account(String number, double balance, String customerName, String customerEmailAddress, String customerPhoneNumber) {
         this.number = number;
         this.balance = balance;
         this.customerName = customerName;
