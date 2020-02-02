@@ -215,6 +215,15 @@ public class Hello {
         EnhancedPlayer enhancedPlayer = new EnhancedPlayer("Time", 50, "Sword");
         System.out.println("eInitial health is :  " + enhancedPlayer.getHealth());
 
+
+        Printer printer = new Printer(50, true);
+        System.out.println("initial page count = " + printer.getPagePrinted());
+
+        int pagePrinted = printer.printPages(4);
+        System.out.println("Pages printed was " + pagePrinted + " now total print count for print = " + printer.getPagePrinted());
+
+        pagePrinted = printer.printPages(2);
+        System.out.println("Pages printed was " + pagePrinted + " now total print count for print = " + printer.getPagePrinted());
     }
 
 
