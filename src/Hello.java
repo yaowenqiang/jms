@@ -199,7 +199,21 @@ public class Hello {
         thePc.getTheCase().pressPowerButton();
 
 
+        Player player = new Player();
+        player.name = "Tim";
+        player.health = 20;
+        player.weapon = "swodd";
 
+        int damage = 10;
+        player.loseHealth(damage);
+        System.out.println("Remaining helth: " + player.healthRemaining());
+
+        damage = 11;
+        player.loseHealth(damage);
+        System.out.println("Remaining helth: " + player.healthRemaining());
+
+        EnhancedPlayer enhancedPlayer = new EnhancedPlayer("Time", 50, "Sword");
+        System.out.println("eInitial health is :  " + enhancedPlayer.getHealth());
 
     }
 
