@@ -1,4 +1,4 @@
-public class Animal {
+public class Animal extends  Object{
     private String name;
     private int brain;
     private int body;
@@ -57,7 +57,7 @@ public class Animal {
         System.out.println("Animal.eat called");
     }
 
-    public void move() {
-        System.out.println("Animal.move called");
+    public void move(int speed) {
+        System.out.println("Animal is moving at " + speed);
     }
 }

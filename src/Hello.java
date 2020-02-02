@@ -165,8 +165,8 @@ public class Hello {
         whileLoop();
         doWhileLoop();
 
-        Car porsche = new Car();
-        Car holden = new Car();
+        Car porsche = new Car("parsche","",0,1,4,4,"aaa","911","red" );
+        Car holden = new Car("holden","",0,1,4,4,"aaa","911","red" );
 //        porsche = null;
         System.out.println("Model is " + porsche.getModel());
         porsche.setModel("Carrera");
@@ -182,6 +182,23 @@ public class Hello {
         bobAccount.withdraw(100.0);
         bobAccount.deposit(100.0);
         bobAccount.withdraw(100.0);
+
+        Dimensions dimensions = new Dimensions(20,20, 5);
+        Case theCase = new Case("220b", "Dell", "240", dimensions);
+
+        Monitor monitor = new Monitor("27inch Beast", "Acer", 27, new Resolution(2540, 1440));
+
+        Motherboard theMotherboard = new Motherboard("02-200", "ASUS", 4, 6, "v2.44");
+
+        PC thePc = new PC(theCase, monitor, theMotherboard);
+
+        thePc.getMonitor().drawPixelAt(1500, 200, "red");
+
+        thePc.getMotherboard().loadProgram("Windows 1.0");
+
+        thePc.getTheCase().pressPowerButton();
+
+
 
 
     }
