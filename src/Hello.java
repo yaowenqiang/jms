@@ -239,6 +239,18 @@ public class Hello {
         hamburger.addHamburgerAddition3("Cheese", 1.12);
         price = hamburger.itemizeHamburger();
         System.out.println("Total burger price is " + price);
+
+        HealthBurger healthBurger = new HealthBurger("Bacon", 5.64);
+        healthBurger.itemizeHamburger();
+
+        healthBurger.addHealthAddition1("Egg", 5.43);
+        healthBurger.addHealthAddition1("Lentils", 3.41);
+        System.out.println("Total Healthy Burger price is " + healthBurger.itemizeHamburger());
+
+        DeluxeBurger db = new DeluxeBurger();
+        db.addHamburgerAddition1("Should not do this", 99.99);
+        db.itemizeHamburger();
+
     }
 
 
