@@ -3,6 +3,8 @@ import java.util.Scanner;
 public class ArrayDemo {
 
     private static Scanner scanner = new Scanner(System.in);
+//    private static int[] baseArray = new int[10];
+    private static int[] baseArray = {0,1,2,3,4,5,6,7,8,9};
     public static void main(String[] args) {
         int[] myIntArray = new int[10];
         myIntArray[5] = 50;
@@ -29,12 +31,36 @@ public class ArrayDemo {
 
         System.out.println("The average is " + getAverage(arrayIntegers));
 
+        resizeArray();
+        System.out.println("the new lengh of baseArray is " + baseArray.length);
+
+        //https://docs.oracle.com/javase/8/docs/api/java/util/List.html
+
+        //https://docs.oracle.com/javase/8/docs/api/java/util/ArrayList.html
+
+
+
+
+
+
+
     }
 
-    public static  void  printArray(int[] array) {
+    public static  void  printArray(int[] array)
+    {
         for (int i = 0; i < array.length; i++) {
             System.out.println("Element " + i + " , value is " + array[i]);
         }
+    }
+
+    public static void  resizeArray()
+    {
+        int[] original = baseArray;
+        baseArray = new int[12];
+        for (int i = 0; i < original.length;i++) {
+            baseArray[i] = original[i];
+        }
+
     }
 
     public static int[] getIntegers(int number) {
@@ -59,7 +85,7 @@ public class ArrayDemo {
 
 
     public static int[] sortIntegers(int[] array) {
-        int[] sortedArray = new int[array.length);
+        int[] sortedArray = new int[array.length];
         for (int i = 0; i < array.length;i++) {
             sortedArray[i] = array[i];
         }
@@ -75,8 +101,7 @@ public class ArrayDemo {
                    temp = sortedArray[i];
                    sortedArray[i] = sortedArray[i+1];
                    sortedArray[i+1] = temp;
-                   flag = true
-
+                   flag = true;
                }
            }
         }
