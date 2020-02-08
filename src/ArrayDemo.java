@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ArrayDemo {
@@ -69,6 +70,9 @@ public class ArrayDemo {
                     break;
                 case 6:
                     quit = true;
+                    break;
+                case 7:
+                    processArrayList();
                     break;
             }
         }
@@ -152,6 +156,7 @@ public class ArrayDemo {
         System.out.println("\t 4 - To remove an item to the list.");
         System.out.println("\t 5 - To search en item from the list.");
         System.out.println("\t 6 - To quit the application.");
+        System.out.println("\t 6 - To copy the List.");
     }
 
     public static void addIem() {
@@ -182,5 +187,13 @@ public class ArrayDemo {
             System.out.println(searchItem + " not no file");
         }
 
+    }
+
+    public static void processArrayList() {
+        ArrayList<String> newArray = new ArrayList<String>() ;
+        ArrayList<String> newArray2 = new ArrayList<String>(groceryList.getGroceryList()) ;
+        newArray.addAll(groceryList.getGroceryList());
+        String[] myArray = new String[groceryList.getGroceryList().size()];
+        myArray = groceryList.getGroceryList().toArray(myArray);
     }
 }

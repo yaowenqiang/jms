@@ -51,4 +51,8 @@ public class GroceryList {
             modifyGroceryItem(position, newItem);
         }
     }
+
+    public ArrayList<String> getGroceryList() {
+        return groceryList;
+    }
 }
