@@ -77,6 +77,22 @@ public class ArrayDemo {
             }
         }
 
+//        Integer myInt = new Integer(11);
+        Integer myInt = 11;//Integer.valueOf(11)
+//        Double myDouble = new Double(1.11);
+        int myIntValue = myInt;//myInt.intValue();
+        Double myDouble = 1.11; //Double.valueOf(1.11)
+
+        ArrayList<Integer> intArrayList = new ArrayList<Integer>();
+        for (int i = 0; i < 10; i++) {
+            intArrayList.add(Integer.valueOf(i));
+        }
+
+        for (int i = 0; i < 10; i++) {
+            System.out.println(i + " -> " + intArrayList.get(i).intValue());
+        }
+
+
 
 
 
