@@ -11,6 +11,16 @@ public class GenericDemo {
         items.add(4);
         items.add(5);
         printDoubled(items);
+
+        FootballPlayer joe = new FootballPlayer("Joe");
+        BaseballPlayer pat = new BaseballPlayer("Pat");
+        SoccerPlayer beckham = new SoccerPlayer("Beckham");
+
+        Team adelaideCrows = new Team("adelaideCrows");
+        adelaideCrows.addPlayer(joe);
+        adelaideCrows.addPlayer(pat);
+        adelaideCrows.addPlayer(beckham);
+        System.out.println(adelaideCrows.numPlayers());
     }
 
     public static void printDoubled(ArrayList<Integer> n) {
