@@ -61,6 +61,16 @@ public class GenericDemo {
         teams.add(melbourne);
         teams.add(fremantle);
         Collections.sort(teams);
+
+        League<Team<FootballPlayer>> footballLeague = new League<>("AFL");
+        footballLeague.add(adelaideCrows);
+        footballLeague.add(melbourne);
+        footballLeague.add(hawthorn);
+        footballLeague.add(fremantle);
+        footballLeague.showLeagueTable();
+//        footballLeague.add(beckham);
+//        League<Team<BaseballPlayer>> baseballLeague = new League<>("");
+
     }
 
     public static void printDoubled(ArrayList<Integer> n) {
