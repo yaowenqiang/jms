@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class ScopeDemo {
     public static void main(String[] args) {
         String varFour = "This is private to main()";
@@ -12,9 +14,12 @@ public class ScopeDemo {
         scopeInstance.useInner();
 
         ScopeCheck.InnerClass innerClass2 = scopeInstance.new InnerClass();
-//        System.out.println("varThree is not accessable here "+ innerClass2.varThree);
+//        System.out.println("varThree is not accessible here "+ innerClass2.varThree);
 
-
+//        Scanner scanner = new Scanner(System.in);
+//        X x = new X(scanner.nextInt());
+        X x = new X(new Scanner(System.in));
+        x.x();
 
     }
 }
