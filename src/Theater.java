@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Theater {
     private final String theaterName;
-    private List<Seat> seats = new ArrayList<>();
+    public List<Seat> seats = new ArrayList<>();
 //    private List<Seat> seats = new LinkedList<>();
 //    private Collection<Seat> seats = new HashSet<>();
 //    private Collection<Seat> seats = new LinkedHashSet<>();
@@ -84,7 +84,7 @@ public class Theater {
         }
     }
 
-    private class Seat implements Comparable<Seat>{
+    public class Seat implements Comparable<Seat>{
         private final String seatNumber;
         private boolean reserved = false;
 
