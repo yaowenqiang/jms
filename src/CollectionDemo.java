@@ -42,13 +42,17 @@ public class CollectionDemo {
         System.out.println("printing sorted seatCopy");
         printList(seatCopy);
 
-        List<Theater.Seat> newList = new ArrayList<>(theater.seats.size());
-        Collections.copy(newList, theater.seats);
+//        List<Theater.Seat> newList = new ArrayList<>(theater.seats.size());
+//        Collections.copy(newList, theater.seats);
+
+        List<Theater.Seat> reverseSeats = new ArrayList<>(theater.getSeats());
+        Collections.reverse(reverseSeats);
+        printList(reverseSeats);
     }
 
     public static void printList(List<Theater.Seat> list) {
         for (Theater.Seat seat : list) {
-            System.out.print(" " + seat.getSeatNumber());
+            System.out.print(" " + seat.getSeatNumber() + " " + seat.getPrice());
         }
         System.out.println();
         System.out.println("====================");

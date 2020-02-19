@@ -6,6 +6,7 @@ import java.util.Scanner;
 
 //https://docs.oracle.com/javase/7/docs/api/java/util/Iterator.html
 public class Demo {
+    public int intVar;
     public static void main(String[] args) {
         LinkedList<String> placeList = new LinkedList<String>();
 //        placeList.add("Sydney");
