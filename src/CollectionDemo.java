@@ -53,11 +53,12 @@ public class CollectionDemo {
         priceSeats.add(theater.new Seat("B00", 13.80));
         priceSeats.add(theater.new Seat("A00", 31.00));
         Collections.sort(priceSeats,Theater.PRICE_ORDER);
+        printList(priceSeats);
     }
 
     public static void printList(List<Theater.Seat> list) {
         for (Theater.Seat seat : list) {
-            System.out.print(" " + seat.getSeatNumber() + " " + seat.getPrice());
+            System.out.print(" " + seat.getSeatNumber() + " $" + seat.getPrice());
         }
         System.out.println();
         System.out.println("====================");
