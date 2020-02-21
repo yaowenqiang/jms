@@ -18,12 +18,31 @@ public class MapProgram {
 
 
         languages.put("basic", "Beginners All purposes symbolic Instruction  Code. ");
-        languages.put("lisp", "Therein lies madness.");
+        languages.put("Lisp", "Therein lies madness.");
         System.out.println(languages.get("Java"));
 
         for (String key: languages.keySet()) {
             System.out.println(key + ": " + languages.get(key));
         }
+
+        //languages.remove("Lisp");
+        languages.remove("Python");
+        if (languages.remove("Algol", "an algorithmic language")) {
+            System.out.println("Algol removed.");
+        } else {
+            System.out.println("Algol not removed, key/value pair not found.");
+        }
+
+        System.out.println(languages.replace("Lisp", "a functional programming language with imperative features."));
+        System.out.println(languages.replace("Sacla", "This will not be added."));
+
+
+        if (languages.replace("Lisp", "this will not work", "a functional programming language with imperative features.")) {
+            System.out.println("Lisp replaced.");
+        } else {
+            System.out.println("Lisp not replaced.");
+        }
+
 
 
     }
