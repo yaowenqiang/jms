@@ -33,6 +33,16 @@ public class AdventureGame {
         locations.get(5).addExit("W", 2);
 //        locations.get(5).addExit("Q", 0);
 
+        Map<String, String> vocabulary = new HashMap<>();
+
+        vocabulary.put("QUIT", "Q");
+        vocabulary.put("NORTh", "N");
+        vocabulary.put("SOUTh", "S");
+        vocabulary.put("EAST",  "E");
+        vocabulary.put("WAST",  "W");
+
+
+
 
 
         int loc = 1;
@@ -49,7 +59,16 @@ public class AdventureGame {
              }
 
              System.out.println();
-             String direction = scanner.next().toUpperCase();
+             String direction = scanner.nextLine().toUpperCase();
+             if (direction.length() > 1) {
+                 String[] words = direction.split(" ");
+                 for (String  word : words) {
+                     if (vocabulary.containsKey(word)) {
+                         direction = vocabulary.get(word);
+                         break;
+                     }
+                 }
+             }
              if (exits.containsKey(direction)) {
                  loc = exits.get(direction);
              } else {
