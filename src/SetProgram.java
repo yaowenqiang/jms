@@ -4,6 +4,7 @@ import java.util.Map;
 import java.util.Set;
 
 public class SetProgram {
+    //https://docs.oracle.com/javase/8/docs/technotes/guides/vm/performance-enhancements-7.html
     private static Map<String, HeavenlyBody> solarSystem = new HashMap<>();
     private static Set<HeavenlyBody> planets = new HashSet<>();
     public static void main(String[] args) {
@@ -93,7 +94,24 @@ public class SetProgram {
             System.out.println("\t " + moon.getName());
         }
 
-        
+
+        HeavenlyBody pluto = new HeavenlyBody("Plotu", 842);
+        planets.add(pluto);
+
+
+        for (HeavenlyBody planet : planets) {
+            System.out.println(planet.getName() + ": " + planet.getOrbitalPeriod());
+        }
+
+//        Object o = new Object();
+//        o.equals(o);
+//        "pluto".equals("");
+
+
+
+
+
 
     }
+
 }
