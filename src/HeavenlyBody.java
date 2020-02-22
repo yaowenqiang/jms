@@ -26,9 +26,10 @@ public final class HeavenlyBody {
    public Set<HeavenlyBody> getSatellites() {
       return new HashSet<>(this.satellites);
    }
-
+    
    @Override
     public boolean equals(Object obj) {
+       System.out.println("equal called.");
       if (this == obj) {
          return true;
       }
@@ -44,4 +45,11 @@ public final class HeavenlyBody {
 
    }
 
+    @Override
+    public int hashCode() {
+       //return  this.name.hashCode();
+       //return 0
+        System.out.println("hashcode called");
+       return this.name.hashCode() + 57;
+    }
 }
