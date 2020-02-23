@@ -26,7 +26,7 @@ public final class HeavenlyBody {
    public Set<HeavenlyBody> getSatellites() {
       return new HashSet<>(this.satellites);
    }
-    
+
    @Override
     public boolean equals(Object obj) {
        System.out.println("equal called.");

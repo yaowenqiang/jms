@@ -95,7 +95,7 @@ public class SetProgram {
         }
 
 
-        HeavenlyBody pluto = new HeavenlyBody("Plotu", 842);
+        HeavenlyBody pluto = new HeavenlyBody("Pluto", 842);
         planets.add(pluto);
 
 
