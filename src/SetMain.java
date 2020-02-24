@@ -40,8 +40,41 @@ public class SetMain {
         String[] divineWords = {"to", "err", "is", "human", "to", "forgive", "divine"};
         divine.addAll(Arrays.asList(divineWords));
 
+        System.out.println("nature - divine:");
+        Set<String> diff = new HashSet<>(nature);
+        diff.removeAll(divine);
 
+        System.out.println("nature - divine:");
+        Set<String> diff2 = new HashSet<>(divine);
+        diff2.removeAll(nature);
 
+        Set<String> unionTest = new HashSet<>(nature);
+        unionTest.addAll(divine);
 
+        Set<String> intersectionTest = new HashSet<>(nature);
+        intersectionTest.retainAll(divine);
+        unionTest.removeAll(intersectionTest);
+
+        if (nature.containsAll(divine)) {
+            System.out.println("divine is a subset of nature");
+        }
+        if (nature.containsAll(intersectionTest)) {
+            System.out.println("divine is a subset of nature");
+        }
+        if (nature.containsAll(divine)) {
+            System.out.println("divine is a subset of nature");
+        }
+        if (divine.containsAll(intersectionTest)) {
+            System.out.println("intersection is a subset of nature");
+        }
+
+    }
+
+    private static void printList(Set<String> set) {
+        System.out.println("\t");
+        for (String s : set) {
+            System.out.println(s + " ");
+        }
+        System.out.println();
     }
 }
