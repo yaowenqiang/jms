@@ -11,6 +11,9 @@ public class StockProgram {
         stockList.addStock(temp);
         temp = new StockItem("cup", 0.05, 200);
         stockList.addStock(temp);
+        temp = new StockItem("cup", 0.45, 7);
+        stockList.addStock(temp);
+
         temp = new StockItem("door", 72.95, 4);
         stockList.addStock(temp);
         temp = new StockItem("juice", 2.50, 36);
@@ -25,6 +28,33 @@ public class StockProgram {
         for(String s: stockList.Items().keySet()) {
             System.out.println(s);
         }
+
+        Basket myBasket = new Basket("jack");
+        sellItem(myBasket, "car", 1);
+        System.out.println(myBasket);
+
+        sellItem(myBasket, "car", 1);
+        sellItem(myBasket, "car", 1);
+        sellItem(myBasket, "car", 1);
+        sellItem(myBasket, "spanner", 1);
+        sellItem(myBasket, "juice", 4);
+        sellItem(myBasket, "cup", 4);
+        sellItem(myBasket, "bread", 1);
+        System.out.println(myBasket);
+        System.out.println(stockList);
+    }
+
+    public static int sellItem(Basket basket, String item, int quantity) {
+        StockItem stockItem = stockList.get(item);
+        if (stockItem == null) {
+            System.out.println("We don't sell " + item);
+            return 0;
+        }
+        if (stockList.sellStock(item, quantity) != 0) {
+            basket.addToBasket(stockItem, quantity);
+            return quantity;
+        }
+        return 0;
     }
 
 
