@@ -1,7 +1,11 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class ExceptionProgram {
     public static void main(String[] args) {
+        //LBYL(look before you leap)
+        //EAFP(Easy to Ask For forgiveness then permission)
+        //https://www.kawabangga.com/posts/3022
         int x = 80;
         int y = 0;
         System.out.println(divideEAFP(x,y));
@@ -11,6 +15,8 @@ public class ExceptionProgram {
         System.out.println("a is " + a);
         int b = getIntLBYL();
         System.out.println("b is " + b);
+        int c = getIntEAFP();
+        System.out.println("c is " + c);
     }
 
     private static int divideLBYL(int x, int y){
@@ -52,5 +58,15 @@ public class ExceptionProgram {
             return Integer.parseInt(input);
         }
         return 0;
+    }
+
+    private static int getIntEAFP() {
+        Scanner s = new Scanner(System.in);
+        System.out.println("Please enter an integer ");
+        try {
+            return s.nextInt();
+        } catch (InputMismatchException e) {
+            return 0;
+        }
     }
 }
