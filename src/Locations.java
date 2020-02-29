@@ -4,32 +4,39 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
-
+//https://docs.oracle.com/javase/tutorial/essential/exceptions/tryResourceClose.html
 public class Locations implements Map<Integer, Location> {
   private static Map<Integer, Location> locations = new HashMap<>();
-
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
+        /*
         FileWriter locFile = null;
         try {
             locFile = new FileWriter("location.txt");
             for (Location location : locations.values()) {
                 locFile.write(location.getLocationID() + ", " + location.getDescription() + "\n");
+//                throw new IOException("test exception wile writing.");
             }
-        } catch (IOException e) {
-            System.out.println("in catch block");
-            e.printStackTrace();
+//        } catch (IOException e) {
+//            System.out.println("in catch block");
+//            e.printStackTrace();
         } finally {
             System.out.println("into finally block.");
-            try {
+            //try {
                 if (locFile != null) {
                     System.out.println("tempting to close locFile");
                     locFile.close();
                 }
-            } catch (IOException e) {
-                e.printStackTrace();
+            //}
+//            catch (IOException e) {
+//                e.printStackTrace();
+//            }
+        }
+*/
+        try (FileWriter locFile = new FileWriter("locations.txt")) {
+            for (Location location : locations.values()) {
+                locFile.write(location.getLocationID() + "," + location.getDescription() + "\n");
             }
         }
-
 
     }
   static {
