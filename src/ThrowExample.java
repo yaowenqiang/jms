@@ -4,6 +4,13 @@ import java.util.Scanner;
 
 public class ThrowExample {
     public static void main(String[] args) {
+        try {
+           int result = divide();
+            System.out.println(result);
+        } catch (ArithmeticException | NoSuchElementException e) {
+            System.out.println(e.toString());
+            System.out.println("unable to perform division, autopilot shutting down. ");
+        }
         int result = divide();
         System.out.println(result);
     }
