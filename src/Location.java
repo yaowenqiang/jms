@@ -33,4 +33,8 @@ public class Location {
 //        exits.put(direction, location);
 //    }
 
+
+    protected void addExit(String direction, int location) {
+       exits.put(direction, location) ;
+    }
 }

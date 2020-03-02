@@ -1,3 +1,4 @@
+import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -5,9 +6,9 @@ import java.util.*;
 
 //https://docs.oracle.com/javase/tutorial/essential/exceptions/tryResourceClose.html
 public class Locations implements Map<Integer, Location> {
-  private static Map<Integer, Location> locations = new HashMap<>();
+    private static Map<Integer, Location> locations = new HashMap<>();
+
     public static void main(String[] args) throws IOException {
-        /*
         FileWriter locFile = null;
         try {
             locFile = new FileWriter("location.txt");
@@ -21,28 +22,28 @@ public class Locations implements Map<Integer, Location> {
         } finally {
             System.out.println("into finally block.");
             //try {
-                if (locFile != null) {
-                    System.out.println("tempting to close locFile");
-                    locFile.close();
-                }
+            if (locFile != null) {
+                System.out.println("tempting to close locFile");
+                locFile.close();
+            }
             //}
 //            catch (IOException e) {
 //                e.printStackTrace();
 //            }
         }
-*/
-        try (FileWriter locFile = new FileWriter("locations.txt");
-                FileWriter dirFile = new FileWriter("directions.txt")) {
+        try (FileWriter locFile2 = new FileWriter("locations.txt");
+             FileWriter dirFile = new FileWriter("directions.txt")) {
             for (Location location : locations.values()) {
-                locFile.write(location.getLocationID() + "," + location.getDescription() + "\n");
+                locFile2.write(location.getLocationID() + "," + location.getDescription() + "\n");
                 for (String direction : location.getExits().keySet()) {
-                    dirFile.write(location.getLocationID() + "," + direction  +  ","  + location.getExits().get(direction) + "\n");
+                    dirFile.write(location.getLocationID() + "," + direction + "," + location.getExits().get(direction) + "\n");
                 }
             }
         }
 
     }
-  static {
+
+    static {
         /*
       Map<String, Integer> tempExit = new HashMap<>();
       locations.put(0,new Location(0,"You are sitting in front of a computer learning Java", tempExit));
@@ -79,87 +80,109 @@ public class Locations implements Map<Integer, Location> {
       locations.put(5,new Location(5,"You are in the forest", tempExit));
      */
 
-      Scanner scanner = null;
-      try {
-          scanner = new Scanner(new FileReader("locations.txt"));
-          scanner.useDelimiter(",");
-          while(scanner.hasNextLine()) {
-              int loc = scanner.nextInt();
-              scanner.skip(scanner.delimiter());
-              String description = scanner.nextLine();
-              System.out.println("imported loc: " + loc + " " + description);
-              Map<String, Integer> tempExit = new HashMap<>();
-              locations.put(loc, new Location(loc, description, tempExit));
+        Scanner scanner = null;
+        try {
+            scanner = new Scanner(new FileReader("locations.txt"));
+            scanner.useDelimiter(",");
+            while (scanner.hasNextLine()) {
+                int loc = scanner.nextInt();
+                scanner.skip(scanner.delimiter());
+                String description = scanner.nextLine();
+                System.out.println("imported loc: " + loc + " " + description);
+                Map<String, Integer> tempExit = new HashMap<>();
+                locations.put(loc, new Location(loc, description, tempExit));
 
-          }
+            }
 
-      } catch ( IOException e) {
-          e.printStackTrace();
-      } finally {
-          if (scanner != null) {
-              scanner.close();
-          }
-      }
-  }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (scanner != null) {
+                scanner.close();
+            }
+        }
+        Scanner scanner1 = null;
+        try {
+            scanner1 = new Scanner(new BufferedReader(new FileReader("directions.txt")));
+            scanner1.useDelimiter(",");
+            while (scanner1.hasNext()) {
+                int loc = scanner1.nextInt();
+                String direction = scanner1.next();
+                scanner1.skip(scanner1.delimiter());
+                String dest = scanner1.nextLine();
+                int destination = Integer.parseInt(dest);
+                System.out.println(loc + " " + direction + " " + destination);
+                Location location = locations.get(loc);
+                location.addExit(direction, destination);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (scanner1 != null) {
+                scanner.close();
+            }
+        }
+
+    }
 
     @Override
     public int size() {
         return locations.size();
-   }
+    }
 
-   @Override
-   public boolean isEmpty() {
-      return locations.isEmpty();
-   }
+    @Override
+    public boolean isEmpty() {
+        return locations.isEmpty();
+    }
 
-   @Override
-   public boolean containsKey(Object key) {
-      return locations.containsKey(key);
-   }
+    @Override
+    public boolean containsKey(Object key) {
+        return locations.containsKey(key);
+    }
 
-   @Override
-   public boolean containsValue(Object value) {
-       return locations.containsValue(value);
-   }
+    @Override
+    public boolean containsValue(Object value) {
+        return locations.containsValue(value);
+    }
 
-   @Override
-   public Location get(Object key) {
-       return locations.get(key);
-   }
+    @Override
+    public Location get(Object key) {
+        return locations.get(key);
+    }
 
-   @Override
-   public Location put(Integer key, Location value) {
-       return locations.put(key, value);
-   }
+    @Override
+    public Location put(Integer key, Location value) {
+        return locations.put(key, value);
+    }
 
-   @Override
-   public Location remove(Object key) {
-       return locations.remove(key);
-   }
+    @Override
+    public Location remove(Object key) {
+        return locations.remove(key);
+    }
 
-   @Override
-   public void putAll(Map<? extends Integer, ? extends Location> m) {
+    @Override
+    public void putAll(Map<? extends Integer, ? extends Location> m) {
 
-   }
+    }
 
-   @Override
-   public void clear() {
+    @Override
+    public void clear() {
 
-      locations.clear();
-   }
+        locations.clear();
+    }
 
-   @Override
-   public Set<Integer> keySet() {
-       return locations.keySet();
-   }
+    @Override
+    public Set<Integer> keySet() {
+        return locations.keySet();
+    }
 
-   @Override
-   public Collection<Location> values() {
-       return locations.values();
-   }
+    @Override
+    public Collection<Location> values() {
+        return locations.values();
+    }
 
-   @Override
-   public Set<Entry<Integer, Location>> entrySet() {
-       return locations.entrySet();
-   }
+    @Override
+    public Set<Entry<Integer, Location>> entrySet() {
+        return locations.entrySet();
+    }
 }
