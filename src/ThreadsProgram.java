@@ -10,12 +10,20 @@ public class ThreadsProgram {
             }
         }.start();
 
+        //Thread myRunnableThread = new Thread(new MyRunnable());
+        Thread myRunnableThread = new Thread(new MyRunnable(){
+            @Override
+            public void run() {
+                System.out.println(ThreadColor.ANSI_RED + "welcome to anonymous thread.");
+            }
+        });
+        myRunnableThread.start();
+
+
+
         System.out.println(ThreadColor.ANSI_GREEN + "hello again from the main thread.");
         //anotherThread.start();
 
-        Thread myRunnableThread  = new Thread(new MyRunnable());
-        myRunnableThread.run();
 
-        Thread  myrunnableThread = new 
     }
 }
