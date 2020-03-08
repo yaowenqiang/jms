@@ -1,22 +1,47 @@
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.concurrent.*;
 import java.util.concurrent.locks.ReentrantLock;
 //https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/atomic/package-summary.html
 //https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/atomic/AtomicInteger.html
 //https://docs.oracle.com/javase/7/docs/api/java/util/concurrent/locks/Lock.html
+//https://docs.oracle.com/javase/7/docs/api/java/util/concurrent/ExecutorService.html
 
 public class UtilConcurrentProgram {
     public static final String EOF = "EOF";
     public static void main(String[] args) {
         List<String> buffer = new ArrayList<>();
         ReentrantLock bufferLock = new ReentrantLock();
+
+        ExecutorService executorService = Executors.newFixedThreadPool(5);
+
         MyProducer myProducer = new MyProducer(buffer, ThreadColor.ANSI_PURPLE, bufferLock);
         MyConsumer myConsumer1 = new MyConsumer(buffer, ThreadColor.ANSI_GREEN,bufferLock);
         MyConsumer myConsumer2 = new MyConsumer(buffer, ThreadColor.ANSI_BLUE, bufferLock);
-        new Thread(myProducer).start();
-        new Thread(myConsumer1).start();
-        new Thread(myConsumer2).start();
+        executorService.execute(myProducer);
+        executorService.execute(myConsumer1);
+        executorService.execute(myConsumer2);
+//        new Thread(myProducer).start();
+//        new Thread(myConsumer1).start();
+//        new Thread(myConsumer2).start();
+
+        Future<String> future = executorService.submit(new Callable<String>() {
+            @Override
+            public String call() throws Exception {
+                System.out.println(ThreadColor.ANSI_GREEN + "I am being printed for the callable class");
+                return "This is the callable result";
+            }
+        });
+        try {
+            System.out.println(future.get());
+        }catch (ExecutionException e) {
+            System.out.println("Something wnet wrong.");
+        } catch (InterruptedException e) {
+            System.out.println("Thread running the task was interrupted.");
+        }
+        executorService.shutdown();
+//        executorService.shutdownNow();
     }
 }
 
