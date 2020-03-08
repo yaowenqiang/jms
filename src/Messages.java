@@ -1,4 +1,5 @@
 import java.util.Random;
+//https://docs.oracle.com/javase/7/docs/api/java/util/Collections.html
 public class Messages {
     public static void main(String[] args) {
         Msg message = new Msg();
