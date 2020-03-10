@@ -1,24 +1,30 @@
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 import java.util.concurrent.*;
-import java.util.concurrent.locks.ReentrantLock;
 //https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/atomic/package-summary.html
 //https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/atomic/AtomicInteger.html
 //https://docs.oracle.com/javase/7/docs/api/java/util/concurrent/locks/Lock.html
 //https://docs.oracle.com/javase/7/docs/api/java/util/concurrent/ExecutorService.html
+//https://docs.oracle.com/javase/7/docs/api/java/util/concurrent/Executor.html
+
 
 public class UtilConcurrentProgram {
+
     public static final String EOF = "EOF";
+
     public static void main(String[] args) {
-        List<String> buffer = new ArrayList<>();
-        ReentrantLock bufferLock = new ReentrantLock();
+//        List<String> buffer = new ArrayList<>();
+        ArrayBlockingQueue<String> buffer = new ArrayBlockingQueue<>(6);
+//        ReentrantLock bufferLock = new ReentrantLock();
 
         ExecutorService executorService = Executors.newFixedThreadPool(5);
 
-        MyProducer myProducer = new MyProducer(buffer, ThreadColor.ANSI_PURPLE, bufferLock);
-        MyConsumer myConsumer1 = new MyConsumer(buffer, ThreadColor.ANSI_GREEN,bufferLock);
-        MyConsumer myConsumer2 = new MyConsumer(buffer, ThreadColor.ANSI_BLUE, bufferLock);
+//        MyProducer myProducer = new MyProducer(buffer, ThreadColor.ANSI_PURPLE, bufferLock);
+//        MyConsumer myConsumer1 = new MyConsumer(buffer, ThreadColor.ANSI_GREEN,bufferLock);
+//        MyConsumer myConsumer2 = new MyConsumer(buffer, ThreadColor.ANSI_BLUE, bufferLock);
+
+        MyProducer myProducer = new MyProducer(buffer, ThreadColor.ANSI_PURPLE);
+        MyConsumer myConsumer1 = new MyConsumer(buffer, ThreadColor.ANSI_GREEN);
+        MyConsumer myConsumer2 = new MyConsumer(buffer, ThreadColor.ANSI_BLUE);
         executorService.execute(myProducer);
         executorService.execute(myConsumer1);
         executorService.execute(myConsumer2);
@@ -35,7 +41,7 @@ public class UtilConcurrentProgram {
         });
         try {
             System.out.println(future.get());
-        }catch (ExecutionException e) {
+        } catch (ExecutionException e) {
             System.out.println("Something wnet wrong.");
         } catch (InterruptedException e) {
             System.out.println("Thread running the task was interrupted.");
@@ -47,14 +53,12 @@ public class UtilConcurrentProgram {
 
 class MyProducer implements Runnable {
     public static final String EOF = "EOF";
-    private List<String> buffer;
+    private ArrayBlockingQueue<String> buffer;
     private String color;
-    private ReentrantLock bufferLock;
 
-    public MyProducer(List<String> buffer, String color, ReentrantLock bufferLock) {
+    public MyProducer(ArrayBlockingQueue<String> buffer, String color) {
         this.buffer = buffer;
         this.color = color;
-        this.bufferLock = bufferLock;
     }
 
     @Override
@@ -64,62 +68,49 @@ class MyProducer implements Runnable {
         for (String num : nums) {
             try {
                 System.out.println(color + " Adding..." + num);
-                bufferLock.lock();
-                try {
-                    buffer.add(num);
-                } finally {
-                    bufferLock.unlock();;
-                }
+                buffer.put(num);
                 Thread.sleep(random.nextInt(3000));
             } catch (InterruptedException e) {
                 System.out.println("Producer was interrupted");
             }
         }
         System.out.println(color + "Adding EOF and exit...");
-        bufferLock.lock();;
         try {
-            buffer.add(EOF);
-        } finally {
-            bufferLock.unlock();;
+            buffer.put(EOF);
+        } catch (InterruptedException e) {
         }
     }
 }
 
 class MyConsumer implements Runnable {
-    private List<String> buffer;
+    private ArrayBlockingQueue<String> buffer;
     public static final String EOF = "EOF";
     private String color;
-    private ReentrantLock bufferLock;
 
-    public MyConsumer(List<String> buffer, String color, ReentrantLock bufferLock) {
+    public MyConsumer(ArrayBlockingQueue<String> buffer, String color) {
         this.buffer = buffer;
         this.color = color;
-        this.bufferLock = bufferLock;
     }
 
     @Override
     public void run() {
         int counter = 0;
-        while(true) {
-            if (bufferLock.tryLock()) {
+        while (true) {
+            synchronized (buffer) {
                 try {
                     if (buffer.isEmpty()) {
                         continue;
                     }
-                    System.out.println(color + "the counter is " + counter);
-                    counter = 0;
-
-                    if (buffer.get(0).equals(EOF)) {
+                    if (buffer.peek().equals(EOF)) {
                         System.out.println(color + "Exiting");
                         break;
                     } else {
-                        System.out.println(color + "Removed " + buffer.remove(0));
+                        System.out.println(color + "Removed " + buffer.take());
                     }
-                } finally {
-                    bufferLock.unlock();;
+                } catch (InterruptedException e) {
+
                 }
-            } else {
-                counter++;
+
             }
         }
     }
