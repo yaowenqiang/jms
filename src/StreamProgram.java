@@ -1,7 +1,9 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Stream;
 //https://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html
+//https://docs.oracle.com/javase/tutorial/java/javaOO/methodreferences.html
 
 public class StreamProgram {
     public static void main(String[] args) {
@@ -36,9 +38,31 @@ public class StreamProgram {
         someBingoNumbers
                 .stream()
                 .map(String::toUpperCase)
+//                .map(s -> s.toUpperCase())
                 .filter(s -> s.startsWith("J"))
                 .sorted()
                 .forEach(System.out::println);
+
+//        String upperString = myString.toUpperCase();
+//        String upperString = toUppercase(myString);
+//        List.forEachI(System.out.println);
+//        (String s) -> System.out.println(s);
+//        Class::method
+
+
+        Stream<String> ioNumberStream = Stream.of("I26", "I17", "I29", "O71");
+
+        Stream<String> inNumberStream = Stream.of("N40", "N36", "I60", "I70", "I29", "O71");
+
+        Stream<String> concatString = Stream.concat(ioNumberStream, inNumberStream);
+        System.out.println("----------------");
+        System.out.println(concatString
+                .distinct()
+                .peek(System.out::println)
+                .count());
+
+
+
 
 
 
