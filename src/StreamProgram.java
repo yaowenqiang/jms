@@ -61,13 +61,29 @@ public class StreamProgram {
                 .peek(System.out::println)
                 .count());
 
+        MyEmployee jone = new MyEmployee("John", 20);
+        MyEmployee jack = new MyEmployee("Jack", 29);
+        MyEmployee jame = new MyEmployee("Jame", 40);
+        MyEmployee jimmy = new MyEmployee("Jimmy", 52);
+        MyEmployee carl = new MyEmployee("Carl", 24);
 
+        Department hr = new Department("human Resources");
+        hr.addEmployee(jone);
+        hr.addEmployee(jack);
+        hr.addEmployee(jame);
+        hr.addEmployee(jimmy);
 
+        Department counting = new Department("Accounting");
+        counting.addEmployee(carl);
 
+        List<Department> departments = new ArrayList<>();
 
+        departments.add(hr);
+        departments.add(counting);
 
-
-
+        departments.stream()
+                .flatMap(department -> department.getEmployees().stream())
+                .forEach(System.out::println);
     }
 
 }
