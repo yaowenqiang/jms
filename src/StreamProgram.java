@@ -1,6 +1,8 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 //https://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html
 //https://docs.oracle.com/javase/tutorial/java/javaOO/methodreferences.html
@@ -84,6 +86,31 @@ public class StreamProgram {
         departments.stream()
                 .flatMap(department -> department.getEmployees().stream())
                 .forEach(System.out::println);
+
+//        List<String> sortedGNumbers = someBingoNumbers
+//                .stream()
+//                .map(String::toUpperCase)
+//                .filter(s -> s.startsWith("J"))
+//                .sorted()
+//                .collect(Collectors.toList());
+        List<String> sortedGNumbers = someBingoNumbers
+                .stream()
+                .map(String::toUpperCase)
+                .filter(s -> s.startsWith("J"))
+                .sorted()
+                .collect(ArrayList::new, ArrayList::add, ArrayList::addAll);
+
+        Map<Integer, List<Employee>> groupByAge = departments.stream()
+                .flatMap(department -> department.getEmployees().stream())
+                .collect(Collectors.groupingBy(myEmployee -> myEmployee.getAge));
+        departments.stream()
+                .flatMap(department -> department.getEmployees().stream())
+                .reduce((a1, a2) -> a1.getAge() < a2.getAge() ? a1: a2)
+                .ifPresent(System.out::println);
+
+
+
+
     }
 
 }
