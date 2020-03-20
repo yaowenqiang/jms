@@ -100,14 +100,21 @@ public class StreamProgram {
                 .sorted()
                 .collect(ArrayList::new, ArrayList::add, ArrayList::addAll);
 
-        Map<Integer, List<Employee>> groupByAge = departments.stream()
+        Map<Integer, List<MyEmployee>> groupByAge = departments.stream()
                 .flatMap(department -> department.getEmployees().stream())
-                .collect(Collectors.groupingBy(myEmployee -> myEmployee.getAge));
+                .collect(Collectors.groupingBy(myEmployee -> myEmployee.getAge()));
         departments.stream()
                 .flatMap(department -> department.getEmployees().stream())
                 .reduce((a1, a2) -> a1.getAge() < a2.getAge() ? a1: a2)
                 .ifPresent(System.out::println);
 
+
+        Stream.of("ABC", "AC", "BAA", "CCC", "XY", "ST")
+                .filter(s -> {
+                    System.out.println(s);
+                    return s.length() == 3;
+                })
+                .count();
 
 
 
